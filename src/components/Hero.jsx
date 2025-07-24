@@ -1,16 +1,21 @@
 import React from 'react';
-import { ArrowRightIcon, StarIcon } from '@heroicons/react/24/outline';
+import { StarIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
 import { slideInLeft, slideInRight, fadeInUp } from '../hooks/useScrollAnimation';
 
 const Hero = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center bg-gradient-to-br from-primary to-secondary overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-hero-pattern opacity-10"></div>
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url('/images/hero-background.jpg')`
+        }}
+      ></div>
       
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/20"></div>
+      <div className="absolute inset-0 bg-black/40"></div>
       
       <div className="container-custom relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -74,7 +79,6 @@ const Hero = () => {
                 className="btn-primary"
               >
                 Book Appointment
-                <ArrowRightIcon className="w-5 h-5 ml-2" />
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
@@ -97,15 +101,11 @@ const Hero = () => {
             {/* Main Image */}
             <div className="relative">
               <div className="w-full h-96 lg:h-[500px] bg-white/10 backdrop-blur-sm rounded-2xl overflow-hidden">
-                <div className="w-full h-full bg-gradient-to-br from-white/20 to-white/5 flex items-center justify-center">
-                  <div className="text-center text-white/80">
-                    <div className="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span className="text-3xl">🦷</span>
-                    </div>
-                    <p className="text-lg font-medium">Dental Care Image</p>
-                    <p className="text-sm opacity-75">Professional dental services</p>
-                  </div>
-                </div>
+                <img 
+                  src="/images/team-hero.jpg" 
+                  alt="Professional Dental Team"
+                  className="w-full h-full object-cover"
+                />
               </div>
               
               {/* Floating Elements */}

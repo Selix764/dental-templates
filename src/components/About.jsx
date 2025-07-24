@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRightIcon, CheckIcon } from '@heroicons/react/24/outline';
+import { CheckIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
 import { useScrollAnimation, slideInLeft, slideInRight, fadeInUp } from '../hooks/useScrollAnimation';
 
@@ -16,7 +16,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="section-padding bg-white">
+    <section id="about" className="section-padding bg-white" ref={ref}>
       <div className="container-custom">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left - Image */}
@@ -29,15 +29,11 @@ const About = () => {
             {/* Main Image */}
             <div className="relative">
               <div className="w-full h-96 lg:h-[500px] bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl overflow-hidden">
-                <div className="w-full h-full bg-light-gray flex items-center justify-center">
-                  <div className="text-center text-text-dark/60">
-                    <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span className="text-3xl">🏥</span>
-                    </div>
-                    <p className="text-lg font-medium">Modern Dental Clinic</p>
-                    <p className="text-sm opacity-75">State-of-the-art facilities</p>
-                  </div>
-                </div>
+                <img 
+                  src="/images/clinic.jpg" 
+                  alt="Modern Dental Clinic"
+                  className="w-full h-full object-cover"
+                />
               </div>
               
               {/* Decorative Elements */}
@@ -134,14 +130,13 @@ const About = () => {
               variants={fadeInUp}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="btn-primary"
-              >
-                Learn More About Us
-                <ArrowRightIcon className="w-5 h-5 ml-2" />
-              </motion.button>
+                          <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="btn-primary"
+            >
+              Learn More About Us
+            </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

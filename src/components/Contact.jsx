@@ -4,7 +4,6 @@ import {
   PhoneIcon, 
   MapPinIcon,
   ClockIcon,
-  ArrowRightIcon,
   StarIcon,
   HeartIcon,
   ShieldCheckIcon,
@@ -210,7 +209,6 @@ const Contact = () => {
                 className="w-full btn-primary"
               >
                 Send Message
-                <ArrowRightIcon className="w-5 h-5 ml-2" />
               </motion.button>
             </form>
           </motion.div>
@@ -252,7 +250,7 @@ const Contact = () => {
               ))}
             </div>
 
-            {/* Map Placeholder */}
+            {/* Google Maps Integration */}
             <motion.div
               variants={fadeInUp}
               className="bg-white rounded-xl p-6 shadow-soft"
@@ -260,12 +258,24 @@ const Contact = () => {
               <h4 className="font-heading text-lg font-semibold text-text-dark mb-4">
                 Our Location
               </h4>
-              <div className="w-full h-48 bg-light-gray rounded-lg flex items-center justify-center">
-                <div className="text-center text-text-light">
-                  <MapPinIcon className="w-12 h-12 mx-auto mb-2 text-primary" />
-                  <p className="font-medium">Interactive Map</p>
-                  <p className="text-sm">123 Dental Street, City, State 12345</p>
-                </div>
+              <div className="w-full h-64 lg:h-80 rounded-lg overflow-hidden shadow-soft">
+                <iframe
+                  src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=dental%20clinic&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Dentaire Dental Clinic Location"
+                  className="w-full h-full"
+                ></iframe>
+              </div>
+              <div className="mt-4 text-center">
+                <p className="text-text-light text-sm">
+                  <MapPinIcon className="w-4 h-4 inline mr-1 text-primary" />
+                  123 Dental Street, City, State 12345
+                </p>
               </div>
             </motion.div>
           </motion.div>

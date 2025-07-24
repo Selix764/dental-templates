@@ -2,8 +2,7 @@ import React from 'react';
 import { 
   EnvelopeIcon, 
   PhoneIcon, 
-  MapPinIcon,
-  ArrowRightIcon
+  MapPinIcon
 } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
 import { useScrollAnimation, staggerContainer, fadeInUp } from '../hooks/useScrollAnimation';
@@ -94,9 +93,8 @@ const Footer = () => {
                 <li key={index}>
                   <a 
                     href="#" 
-                    className="text-white/80 hover:text-primary transition-colors duration-300 flex items-center group"
+                    className="text-white/80 hover:text-primary transition-colors duration-300"
                   >
-                    <ArrowRightIcon className="w-4 h-4 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
                     {service}
                   </a>
                 </li>
@@ -112,9 +110,8 @@ const Footer = () => {
                 <li key={index}>
                   <a 
                     href="#" 
-                    className="text-white/80 hover:text-primary transition-colors duration-300 flex items-center group"
+                    className="text-white/80 hover:text-primary transition-colors duration-300"
                   >
-                    <ArrowRightIcon className="w-4 h-4 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
                     {item}
                   </a>
                 </li>
@@ -130,9 +127,8 @@ const Footer = () => {
                 <li key={index}>
                   <a 
                     href="#" 
-                    className="text-white/80 hover:text-primary transition-colors duration-300 flex items-center group"
+                    className="text-white/80 hover:text-primary transition-colors duration-300"
                   >
-                    <ArrowRightIcon className="w-4 h-4 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
                     {item}
                   </a>
                 </li>

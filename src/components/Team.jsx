@@ -1,6 +1,5 @@
 import React from 'react';
 import { 
-  ArrowRightIcon,
   StarIcon,
   HeartIcon,
   ShieldCheckIcon,
@@ -17,7 +16,7 @@ const Team = () => {
       name: 'Dr. Sarah Johnson',
       specialty: 'General Dentistry',
       experience: '15+ Years',
-      image: '👩‍⚕️',
+      image: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="35" r="15" fill="%23e5f3ff"/><path d="M25 80 Q50 60 75 80" fill="%23e5f3ff"/><circle cx="40" cy="30" r="2" fill="%230ea5e9"/><circle cx="60" cy="30" r="2" fill="%230ea5e9"/><path d="M35 40 Q50 45 65 40" fill="none" stroke="%230ea5e9" stroke-width="1"/></svg>',
       rating: 4.9,
       reviews: 250
     },
@@ -25,7 +24,7 @@ const Team = () => {
       name: 'Dr. Michael Chen',
       specialty: 'Orthodontics',
       experience: '12+ Years',
-      image: '👨‍⚕️',
+      image: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="35" r="15" fill="%23f0f9ff"/><path d="M25 80 Q50 60 75 80" fill="%23f0f9ff"/><circle cx="40" cy="30" r="2" fill="%2306b6d4"/><circle cx="60" cy="30" r="2" fill="%2306b6d4"/><path d="M35 40 Q50 45 65 40" fill="none" stroke="%2306b6d4" stroke-width="1"/></svg>',
       rating: 4.8,
       reviews: 180
     },
@@ -33,7 +32,7 @@ const Team = () => {
       name: 'Dr. Emily Rodriguez',
       specialty: 'Pediatric Dentistry',
       experience: '10+ Years',
-      image: '👩‍⚕️',
+      image: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="35" r="15" fill="%23fef3c7"/><path d="M25 80 Q50 60 75 80" fill="%23fef3c7"/><circle cx="40" cy="30" r="2" fill="%23f59e0b"/><circle cx="60" cy="30" r="2" fill="%23f59e0b"/><path d="M35 40 Q50 45 65 40" fill="none" stroke="%23f59e0b" stroke-width="1"/></svg>',
       rating: 4.9,
       reviews: 320
     },
@@ -41,7 +40,7 @@ const Team = () => {
       name: 'Dr. David Thompson',
       specialty: 'Oral Surgery',
       experience: '18+ Years',
-      image: '👨‍⚕️',
+      image: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="35" r="15" fill="%23f3e8ff"/><path d="M25 80 Q50 60 75 80" fill="%23f3e8ff"/><circle cx="40" cy="30" r="2" fill="%238b5cf6"/><circle cx="60" cy="30" r="2" fill="%238b5cf6"/><path d="M35 40 Q50 45 65 40" fill="none" stroke="%238b5cf6" stroke-width="1"/></svg>',
       rating: 4.7,
       reviews: 150
     }
@@ -103,9 +102,13 @@ const Team = () => {
               {/* Doctor Image */}
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="w-24 h-24 bg-light-gray rounded-full flex items-center justify-center mx-auto mb-4"
+                className="w-24 h-24 bg-light-gray rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden"
               >
-                <span className="text-4xl">{doctor.image}</span>
+                <img 
+                  src={doctor.image} 
+                  alt={doctor.name}
+                  className="w-full h-full object-cover"
+                />
               </motion.div>
 
               {/* Doctor Info */}
@@ -148,7 +151,6 @@ const Team = () => {
             className="btn-primary"
           >
             View All Team Members
-            <ArrowRightIcon className="w-5 h-5 ml-2" />
           </motion.button>
         </motion.div>
 

@@ -20,21 +20,21 @@ const Testimonials = () => {
       role: 'Patient',
       rating: 5,
       text: 'The dental care I received at Dentaire was exceptional. The staff was professional, caring, and made me feel comfortable throughout my entire visit. I highly recommend their services!',
-      image: '👩'
+      image: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="35" r="15" fill="%23fef3c7"/><path d="M25 80 Q50 60 75 80" fill="%23fef3c7"/><circle cx="40" cy="30" r="2" fill="%23f59e0b"/><circle cx="60" cy="30" r="2" fill="%23f59e0b"/><path d="M35 40 Q50 45 65 40" fill="none" stroke="%23f59e0b" stroke-width="1"/></svg>'
     },
     {
       name: 'Michael Chen',
       role: 'Patient',
       rating: 5,
       text: 'Dr. Sarah and her team are amazing! They took the time to explain everything clearly and made sure I was comfortable during my treatment. The results exceeded my expectations.',
-      image: '👨'
+      image: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="35" r="15" fill="%23e5f3ff"/><path d="M25 80 Q50 60 75 80" fill="%23e5f3ff"/><circle cx="40" cy="30" r="2" fill="%230ea5e9"/><circle cx="60" cy="30" r="2" fill="%230ea5e9"/><path d="M35 40 Q50 45 65 40" fill="none" stroke="%230ea5e9" stroke-width="1"/></svg>'
     },
     {
       name: 'Emily Rodriguez',
       role: 'Patient',
       rating: 5,
       text: 'I was nervous about my dental procedure, but the team at Dentaire made me feel so relaxed. Their expertise and gentle approach made all the difference. Thank you!',
-      image: '👩'
+      image: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="35" r="15" fill="%23f3e8ff"/><path d="M25 80 Q50 60 75 80" fill="%23f3e8ff"/><circle cx="40" cy="30" r="2" fill="%238b5cf6"/><circle cx="60" cy="30" r="2" fill="%238b5cf6"/><path d="M35 40 Q50 45 65 40" fill="none" stroke="%238b5cf6" stroke-width="1"/></svg>'
     }
   ];
 
@@ -58,8 +58,15 @@ const Testimonials = () => {
   };
 
   return (
-    <section id="testimonials" className="section-padding bg-white">
-      <div className="container-custom">
+    <section id="testimonials" className="section-padding bg-white relative">
+      {/* Background Pattern */}
+      <div 
+        className="absolute inset-0 opacity-5"
+        style={{
+          backgroundImage: `url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><pattern id="quote-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><text x="50" y="50" text-anchor="middle" dy=".35em" font-family="serif" font-size="40" fill="%230ea5e9">"</text></pattern></defs><rect width="100%" height="100%" fill="url(%23quote-pattern)"/></svg>')`
+        }}
+      ></div>
+      <div className="container-custom relative z-10">
         {/* Header */}
         <motion.div
           ref={ref}
@@ -102,16 +109,24 @@ const Testimonials = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-white rounded-2xl p-8 lg:p-12 shadow-soft border border-border-gray"
+            className="bg-white rounded-2xl p-8 lg:p-12 shadow-soft border border-border-gray relative overflow-hidden"
           >
+            {/* Quote Background */}
+            <div className="absolute top-4 right-4 text-6xl text-primary/10 font-serif">
+              "
+            </div>
             {/* Testimonial Content */}
             <div className="text-center">
               {/* Patient Image */}
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="w-20 h-20 bg-light-gray rounded-full flex items-center justify-center mx-auto mb-6"
+                className="w-20 h-20 bg-light-gray rounded-full flex items-center justify-center mx-auto mb-6 overflow-hidden"
               >
-                <span className="text-3xl">{testimonials[currentTestimonial].image}</span>
+                <img 
+                  src={testimonials[currentTestimonial].image} 
+                  alt={testimonials[currentTestimonial].name}
+                  className="w-full h-full object-cover"
+                />
               </motion.div>
 
               {/* Rating */}

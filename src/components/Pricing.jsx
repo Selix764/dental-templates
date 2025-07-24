@@ -1,7 +1,6 @@
 import React from 'react';
 import { 
   CheckIcon, 
-  ArrowRightIcon,
   StarIcon,
   HeartIcon,
   ShieldCheckIcon,
@@ -165,7 +164,6 @@ const Pricing = () => {
                 }`}
               >
                 Choose Plan
-                <ArrowRightIcon className="w-5 h-5 ml-2 inline" />
               </motion.button>
             </motion.div>
           ))}
@@ -187,7 +185,6 @@ const Pricing = () => {
             className="btn-primary"
           >
             View All Services & Pricing
-            <ArrowRightIcon className="w-5 h-5 ml-2" />
           </motion.button>
         </motion.div>
 
