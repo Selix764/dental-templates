@@ -16,7 +16,6 @@ function App() {
       <Header />
       <Hero />
       <Services />
-      <About />
       <WhyChooseUs />
       <Team />
       <Testimonials />
