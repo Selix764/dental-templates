@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Open Sans', sans-serif;
+    color: #2E2E2E;
+    line-height: 1.6;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary hover:bg-primary/90 text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-medium focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2;
+  }
+  
+  .btn-secondary {
+    @apply bg-white hover:bg-light-gray text-primary border-2 border-primary font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-medium focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2;
+  }
+  
+  .btn-outline {
+    @apply bg-transparent hover:bg-primary text-primary hover:text-white border-2 border-primary font-semibold py-3 px-6 rounded-full transition-all duration-300 hover:shadow-medium focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-medium hover:-translate-y-1;
+  }
+  
+  .section-padding {
+    @apply py-16 px-6;
+  }
+  
+  .container-custom {
+    @apply max-w-1200 mx-auto;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  }
+  
+  .overlay-gradient {
+    background: linear-gradient(135deg, rgba(60, 90, 153, 0.9) 0%, rgba(0, 188, 212, 0.8) 100%);
+  }
+} 
