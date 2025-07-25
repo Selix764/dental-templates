@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   Cog6ToothIcon, 
   HeartIcon, 
@@ -10,37 +11,80 @@ import { useScrollAnimation, staggerContainer, fadeInUp, scaleIn } from '../hook
 
 const Services = () => {
   const { ref, isInView } = useScrollAnimation();
+  const navigate = useNavigate();
 
   const services = [
     {
       icon: Cog6ToothIcon,
-      title: 'General Dentistry',
-      description: 'Comprehensive dental care including cleanings, fillings, and preventive treatments to maintain your oral health.',
-      features: ['Dental Cleanings', 'Cavity Fillings', 'Root Canals', 'Tooth Extractions']
+      title: 'Estetică Dentară',
+      description: 'Transformăm zâmbetul dumneavoastră cu proceduri estetice avansate: albire profesională, fațete dentare din zirconiu și EMAX, și bijuterii dentare Swarovski pentru un look unic.',
+      features: ['Albire Profesională', 'Fațete Dentare', 'Bijuterii Dentare', 'Smile Makeover']
     },
     {
       icon: HeartIcon,
-      title: 'Cosmetic Dentistry',
-      description: 'Transform your smile with advanced cosmetic procedures designed to enhance your appearance and confidence.',
-      features: ['Teeth Whitening', 'Dental Veneers', 'Invisible Braces', 'Smile Makeovers']
+      title: 'Protetică',
+      description: 'Restaurări protetice de înaltă calitate, de la coroane și punți din zirconiu și ceramică, până la lucrări complexe pe implanturi. Utilizăm materiale premium pentru funcționalitate și estetică optimă.',
+      features: ['Coroane Dentare', 'Punți Dentare', 'Lucrări pe Implanturi', 'Materiale Premium']
     },
     {
       icon: ShieldCheckIcon,
-      title: 'Emergency Care',
-      description: '24/7 emergency dental services to address urgent dental problems and provide immediate relief.',
-      features: ['Emergency Extractions', 'Pain Relief', 'Broken Tooth Repair', 'Dental Trauma']
+      title: 'Implantologie și Chirurgie',
+      description: 'Soluții avansate de implantologie cu sisteme premium (Bredent, Straumann, Nobel Biocare) și proceduri chirurgicale asistate pentru recuperare rapidă și confort sporit.',
+      features: ['Implanturi Premium', 'Chirurgie Asistată', 'Recuperare Rapidă', 'Sisteme Avansate']
     },
     {
       icon: UserGroupIcon,
-      title: 'Family Dentistry',
-      description: 'Gentle and caring dental care for the entire family, from children to seniors.',
-      features: ['Pediatric Dentistry', 'Senior Care', 'Family Consultations', 'Preventive Care']
+      title: 'Ortodonție',
+      description: 'Corectăm alinierea dinților cu aparate dentare metalice, ceramice, safir și sisteme invizibile SPARK. Oferim soluții personalizate pentru toate vârstele, cu rezultate estetice remarcabile.',
+      features: ['Aparate Metalice', 'Aparate Ceramice', 'Sisteme Invizibile', 'Soluții Personalizate']
+    },
+    {
+      icon: Cog6ToothIcon,
+      title: 'Profilaxie',
+      description: 'Prevenție dentară completă prin igienizare profesională, detartraj cu ultrasunete, periaj profesional, air-flow, fluorizare și terapii inovatoare precum ozonoterapia și pachetul Oral Detox.',
+      features: ['Igienizare Profesională', 'Detartraj Ultrasunete', 'Air-Flow', 'Ozonoterapie']
+    },
+    {
+      icon: HeartIcon,
+      title: 'Odontoterapie',
+      description: 'Tratamente moderne pentru cariile dentare utilizând tehnologia laser, oferind precizie maximă și disconfort minim. Includem obturații laser standard și la microscop, și tehnici neinvazive ICON.',
+      features: ['Tratamente Laser', 'Obturații Precise', 'Tehnici Neinvazive', 'Precizie Maximă']
+    },
+    {
+      icon: ShieldCheckIcon,
+      title: 'Endodonție la Microscop',
+      description: 'Tratamente de canal de înaltă precizie realizate la microscop. Oferim tratamente și retratamente endodontice pentru toate tipurile de dinți, cu rezultate predictibile și de durată.',
+      features: ['Tratamente de Canal', 'Microscop Avansat', 'Retratamente', 'Rezultate Predictibile']
+    },
+    {
+      icon: UserGroupIcon,
+      title: 'Chirurgie Orală',
+      description: 'Proceduri chirurgicale orale complexe cu tehnologie avansată și anestezie locală pentru confort maxim. Includem extractions, chirurgie periodontală și tratamente pentru afecțiuni orale.',
+      features: ['Extractions Complexe', 'Chirurgie Periodontală', 'Anestezie Locală', 'Recuperare Grijulie']
     }
   ];
 
+  const handleServiceClick = (serviceTitle) => {
+    const servicePages = {
+      'Estetică Dentară': '/estetica-dentara',
+      'Protetică': '/protetica',
+      'Implantologie și Chirurgie': '/implantologie-chirurgie',
+      'Ortodonție': '/ortodontie',
+      'Profilaxie': '/profilaxie',
+      'Odontoterapie': '/odontoterapie',
+      'Endodonție la Microscop': '/endodontie-microscop',
+      'Chirurgie Orală': '/chirurgie-orala'
+    };
+    
+    const page = servicePages[serviceTitle];
+    if (page) {
+      navigate(page);
+    }
+  };
+
   return (
     <section id="services" className="section-padding bg-light-gray">
-      <div className="container-custom">
+      <div className="container-custom px-6">
         {/* Header */}
         <motion.div
           ref={ref}
@@ -53,21 +97,20 @@ const Services = () => {
             variants={fadeInUp}
             className="inline-flex items-center space-x-2 bg-primary/10 text-primary rounded-full px-4 py-2 text-sm font-medium mb-4"
           >
-            <span>+ OUR SERVICES</span>
+            <span>+ TRATAMENTELE NOASTRE</span>
           </motion.div>
           <motion.h2
             variants={fadeInUp}
             className="font-heading text-4xl lg:text-5xl font-bold text-text-dark mb-6"
           >
-            Comprehensive Dental
-            <span className="block text-primary">Care Services</span>
+            Îngrijirea dentară de care aveți nevoie cu o
+            <span className="block text-primary">gamă largă de tratamente</span>
           </motion.h2>
           <motion.p
             variants={fadeInUp}
             className="text-lg text-text-light max-w-2xl mx-auto"
           >
-            We offer a wide range of dental services to meet all your oral health needs. 
-            From routine checkups to advanced cosmetic procedures, our experienced team is here to help.
+            Suntem dedicați sustenabilității și inițiativelor eco-friendly.
           </motion.p>
         </motion.div>
 
@@ -76,13 +119,19 @@ const Services = () => {
           variants={staggerContainer}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16"
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
         >
           {services.map((service, index) => (
             <motion.div
               key={service.title}
               variants={scaleIn}
-              className="bg-white rounded-2xl p-8 shadow-soft card-hover relative overflow-hidden"
+              whileHover={{ 
+                y: -10,
+                scale: 1.02,
+                transition: { duration: 0.3 }
+              }}
+              className="bg-white rounded-2xl p-6 shadow-soft relative overflow-hidden group cursor-pointer"
+              onClick={() => handleServiceClick(service.title)}
             >
               {/* Vector Illustration Background */}
               <div className="absolute top-0 right-0 w-32 h-32 opacity-5">
@@ -117,14 +166,51 @@ const Services = () => {
                     <path d="M35 60 Q50 70 65 60" fill="none" stroke="currentColor" strokeWidth="2"/>
                   </svg>
                 )}
+                {index === 4 && (
+                  <svg viewBox="0 0 100 100" className="w-full h-full">
+                    <path d="M30 30 L70 30 L70 70 L30 70 Z" fill="none" stroke="currentColor" strokeWidth="2"/>
+                    <circle cx="40" cy="40" r="3" fill="currentColor"/>
+                    <circle cx="60" cy="40" r="3" fill="currentColor"/>
+                    <path d="M35 55 Q50 65 65 55" fill="none" stroke="currentColor" strokeWidth="2"/>
+                  </svg>
+                )}
+                {index === 5 && (
+                  <svg viewBox="0 0 100 100" className="w-full h-full">
+                    <circle cx="50" cy="40" r="20" fill="none" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M30 60 L70 60" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M40 70 L60 70" stroke="currentColor" strokeWidth="2"/>
+                  </svg>
+                )}
+                {index === 6 && (
+                  <svg viewBox="0 0 100 100" className="w-full h-full">
+                    <rect x="30" y="25" width="40" height="50" rx="5" fill="none" stroke="currentColor" strokeWidth="2"/>
+                    <circle cx="45" cy="35" r="2" fill="currentColor"/>
+                    <circle cx="55" cy="35" r="2" fill="currentColor"/>
+                    <path d="M35 50 L65 50" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M35 60 L65 60" stroke="currentColor" strokeWidth="2"/>
+                  </svg>
+                )}
+                {index === 7 && (
+                  <svg viewBox="0 0 100 100" className="w-full h-full">
+                    <path d="M25 40 L75 40" stroke="currentColor" strokeWidth="3"/>
+                    <path d="M25 50 L75 50" stroke="currentColor" strokeWidth="3"/>
+                    <path d="M25 60 L75 60" stroke="currentColor" strokeWidth="3"/>
+                    <circle cx="50" cy="30" r="8" fill="none" stroke="currentColor" strokeWidth="2"/>
+                  </svg>
+                )}
               </div>
 
               {/* Icon */}
               <motion.div
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6 relative z-10"
+                whileHover={{ 
+                  scale: 1.1, 
+                  rotate: 5,
+                  backgroundColor: "rgb(60, 90, 153)",
+                  transition: { duration: 0.3 }
+                }}
+                className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-4 relative z-10 group-hover:bg-primary transition-all duration-300"
               >
-                <service.icon className="w-8 h-8 text-primary" />
+                <service.icon className="w-7 h-7 text-primary group-hover:text-white transition-colors duration-300" />
               </motion.div>
 
               {/* Content */}
@@ -148,9 +234,13 @@ const Services = () => {
               {/* Read More Button */}
               <motion.button
                 whileHover={{ x: 5 }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleServiceClick(service.title);
+                }}
                 className="flex items-center text-primary font-semibold text-sm hover:text-primary/80 transition-colors"
               >
-                Read More
+                Citește Mai Mult
               </motion.button>
             </motion.div>
           ))}
@@ -164,14 +254,14 @@ const Services = () => {
           className="text-center"
         >
           <p className="text-lg text-text-light mb-6">
-            Don't see the service you need? Contact us to learn about our full range of dental services.
+            Nu găsiți serviciul de care aveți nevoie? Contactați-ne pentru a afla despre gama completă de servicii dentare.
           </p>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="btn-primary"
           >
-            View All Services
+            Contactați-ne
           </motion.button>
         </motion.div>
       </div>

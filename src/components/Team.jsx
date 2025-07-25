@@ -14,32 +14,32 @@ const Team = () => {
   const doctors = [
     {
       name: 'Dr. Sarah Johnson',
-      specialty: 'General Dentistry',
-      experience: '15+ Years',
+      specialty: 'Stomatologie Generală',
+      experience: '15+ Ani',
       image: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="35" r="15" fill="%23e5f3ff"/><path d="M25 80 Q50 60 75 80" fill="%23e5f3ff"/><circle cx="40" cy="30" r="2" fill="%230ea5e9"/><circle cx="60" cy="30" r="2" fill="%230ea5e9"/><path d="M35 40 Q50 45 65 40" fill="none" stroke="%230ea5e9" stroke-width="1"/></svg>',
       rating: 4.9,
       reviews: 250
     },
     {
       name: 'Dr. Michael Chen',
-      specialty: 'Orthodontics',
-      experience: '12+ Years',
+      specialty: 'Ortodonție',
+      experience: '12+ Ani',
       image: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="35" r="15" fill="%23f0f9ff"/><path d="M25 80 Q50 60 75 80" fill="%23f0f9ff"/><circle cx="40" cy="30" r="2" fill="%2306b6d4"/><circle cx="60" cy="30" r="2" fill="%2306b6d4"/><path d="M35 40 Q50 45 65 40" fill="none" stroke="%2306b6d4" stroke-width="1"/></svg>',
       rating: 4.8,
       reviews: 180
     },
     {
       name: 'Dr. Emily Rodriguez',
-      specialty: 'Pediatric Dentistry',
-      experience: '10+ Years',
+      specialty: 'Stomatologie Pediatrică',
+      experience: '10+ Ani',
       image: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="35" r="15" fill="%23fef3c7"/><path d="M25 80 Q50 60 75 80" fill="%23fef3c7"/><circle cx="40" cy="30" r="2" fill="%23f59e0b"/><circle cx="60" cy="30" r="2" fill="%23f59e0b"/><path d="M35 40 Q50 45 65 40" fill="none" stroke="%23f59e0b" stroke-width="1"/></svg>',
       rating: 4.9,
       reviews: 320
     },
     {
       name: 'Dr. David Thompson',
-      specialty: 'Oral Surgery',
-      experience: '18+ Years',
+      specialty: 'Chirurgie Orală',
+      experience: '18+ Ani',
       image: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="35" r="15" fill="%23f3e8ff"/><path d="M25 80 Q50 60 75 80" fill="%23f3e8ff"/><circle cx="40" cy="30" r="2" fill="%238b5cf6"/><circle cx="60" cy="30" r="2" fill="%238b5cf6"/><path d="M35 40 Q50 45 65 40" fill="none" stroke="%238b5cf6" stroke-width="1"/></svg>',
       rating: 4.7,
       reviews: 150
@@ -47,15 +47,15 @@ const Team = () => {
   ];
 
   const stats = [
-    { number: '15+', label: 'Years Experience', icon: StarIcon },
-    { number: '5000+', label: 'Happy Patients', icon: HeartIcon },
-    { number: '100%', label: 'Satisfaction Rate', icon: ShieldCheckIcon },
-    { number: '24/7', label: 'Emergency Care', icon: UserGroupIcon }
+    { number: '15+', label: 'Ani de Experiență', icon: StarIcon },
+    { number: '5000+', label: 'Pacienți Mulțumiți', icon: HeartIcon },
+    { number: '100%', label: 'Rată de Satisfacție', icon: ShieldCheckIcon },
+    { number: '24/7', label: 'Îngrijire de Urgență', icon: UserGroupIcon }
   ];
 
   return (
     <section id="team" className="section-padding bg-white">
-      <div className="container-custom">
+      <div className="container-custom px-6">
         {/* Header */}
         <motion.div
           ref={ref}
@@ -68,21 +68,21 @@ const Team = () => {
             variants={fadeInUp}
             className="inline-flex items-center space-x-2 bg-primary/10 text-primary rounded-full px-4 py-2 text-sm font-medium mb-4"
           >
-            <span>+ OUR TEAM</span>
+            <span>+ ECHIPA NOASTRĂ</span>
           </motion.div>
           <motion.h2
             variants={fadeInUp}
             className="font-heading text-4xl lg:text-5xl font-bold text-text-dark mb-6"
           >
-            Meet Our Expert
-            <span className="block text-primary">Dental Team</span>
+            Cunoaște Echipa Noastră
+            <span className="block text-primary">Expertă de Dentist</span>
           </motion.h2>
           <motion.p
             variants={fadeInUp}
             className="text-lg text-text-light max-w-2xl mx-auto"
           >
-            Our team of experienced dental professionals is dedicated to providing 
-            exceptional care and creating beautiful smiles for our patients.
+            Echipa noastră de profesioniști dentari cu experiență este dedicată oferirii 
+            de îngrijire excepțională și creării de zâmbete frumoase pentru pacienții noștri.
           </motion.p>
         </motion.div>
 

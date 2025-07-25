@@ -16,31 +16,31 @@ const WhyChooseUs = () => {
   const reasons = [
     {
       icon: ShieldCheckIcon,
-      title: 'Expert Care',
-      description: 'Our team of experienced dental professionals provides the highest quality care.'
+      title: 'Îngrijire Expertă',
+      description: 'Echipa noastră de profesioniști dentari cu experiență oferă cea mai înaltă calitate de îngrijire.'
     },
     {
       icon: ClockIcon,
-      title: 'Convenient Hours',
-      description: 'Flexible scheduling to accommodate your busy lifestyle and family needs.'
+      title: 'Program Convenabil',
+      description: 'Programare flexibilă pentru a se adapta stilului tău de viață aglomerat și nevoilor familiei.'
     },
     {
       icon: UserGroupIcon,
-      title: 'Family Friendly',
-      description: 'Comprehensive dental care for the entire family in a welcoming environment.'
+      title: 'Prietenoasă cu Familia',
+      description: 'Îngrijire dentară completă pentru întreaga familie într-un mediu primitor.'
     }
   ];
 
   const stats = [
-    { number: '15+', label: 'Years Experience', icon: StarIcon },
-    { number: '5000+', label: 'Happy Patients', icon: HeartIcon },
-    { number: '100%', label: 'Satisfaction Rate', icon: ShieldCheckIcon },
-    { number: '24/7', label: 'Emergency Care', icon: Cog6ToothIcon }
+    { number: '15+', label: 'Ani de Experiență', icon: StarIcon },
+    { number: '5000+', label: 'Pacienți Mulțumiți', icon: HeartIcon },
+    { number: '100%', label: 'Rată de Satisfacție', icon: ShieldCheckIcon },
+    { number: '24/7', label: 'Îngrijire de Urgență', icon: Cog6ToothIcon }
   ];
 
   return (
     <section className="section-padding bg-light-gray">
-      <div className="container-custom">
+      <div className="container-custom px-6">
         {/* Header */}
         <motion.div
           ref={ref}
@@ -53,21 +53,21 @@ const WhyChooseUs = () => {
             variants={fadeInUp}
             className="inline-flex items-center space-x-2 bg-primary/10 text-primary rounded-full px-4 py-2 text-sm font-medium mb-4"
           >
-            <span>+ WHY CHOOSE US</span>
+            <span>+ DE CE SĂ NE ALEGI</span>
           </motion.div>
           <motion.h2
             variants={fadeInUp}
             className="font-heading text-4xl lg:text-5xl font-bold text-text-dark mb-6"
           >
-            Why Patients Choose
-            <span className="block text-primary">Dentaire Clinic</span>
+            De Ce Pacienții Ne Aleg
+            <span className="block text-primary">Clinica Dentaire</span>
           </motion.h2>
           <motion.p
             variants={fadeInUp}
             className="text-lg text-text-light max-w-2xl mx-auto"
           >
-            We combine advanced technology with compassionate care to deliver exceptional 
-            dental experiences that exceed your expectations.
+            Combinăm tehnologia avansată cu îngrijirea compasiunată pentru a oferi experiențe 
+            dentare excepționale care depășesc așteptările tale.
           </motion.p>
         </motion.div>
 

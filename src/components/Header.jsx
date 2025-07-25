@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { useNavigate } from 'react-router-dom';
+import { Bars3Icon, XMarkIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
+import { useAppointment } from '../context/AppointmentContext';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
+  const { openModal } = useAppointment();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,14 +20,70 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Doctors', href: '#team' },
-    { name: 'Testimonials', href: '#testimonials' },
-    { name: 'Contact', href: '#contact' },
+  const servicePages = [
+    { name: 'Estetică Dentară', href: '/estetica-dentara' },
+    { name: 'Protetică', href: '/protetica' },
+    { name: 'Implantologie și Chirurgie', href: '/implantologie-chirurgie' },
+    { name: 'Ortodonție', href: '/ortodontie' },
+    { name: 'Profilaxie', href: '/profilaxie' },
+    { name: 'Odontoterapie', href: '/odontoterapie' },
+    { name: 'Endodonție la Microscop', href: '/endodontie-microscop' }
   ];
+
+  const navItems = [
+    { name: 'Acasă', href: '/' },
+    { name: 'Despre', href: '/#about' },
+    { name: 'Servicii', href: '/#services', hasDropdown: true },
+    { name: 'Prețuri', href: '/preturi' },
+    { name: 'Doctori', href: '/#team' },
+    { name: 'Testimoniale', href: '/#testimonials' },
+    { name: 'Contact', href: '/#contact' },
+  ];
+
+  const handleNavClick = (href) => {
+    if (href.startsWith('/#')) {
+      // Handle anchor links
+      const anchor = href.substring(2);
+      if (href === '/#about') {
+        // Navigate to home page first, then scroll to about section
+        navigate('/');
+        setTimeout(() => {
+          const element = document.getElementById(anchor);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      } else {
+        // For other anchor links, check if we're on home page
+        if (window.location.pathname === '/') {
+          const element = document.getElementById(anchor);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        } else {
+          // Navigate to home page first, then scroll
+          navigate('/');
+          setTimeout(() => {
+            const element = document.getElementById(anchor);
+            if (element) {
+              element.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 100);
+        }
+      }
+    } else {
+      // Handle regular routes
+      navigate(href);
+    }
+    setIsMobileMenuOpen(false);
+    setIsServicesDropdownOpen(false);
+  };
+
+  const handleServiceClick = (href) => {
+    navigate(href);
+    setIsServicesDropdownOpen(false);
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <motion.header
@@ -35,12 +96,13 @@ const Header = () => {
           : 'bg-transparent'
       }`}
     >
-      <div className="container-custom">
+      <div className="container-custom px-6">
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-2"
+            className="flex items-center space-x-2 cursor-pointer"
+            onClick={() => navigate('/')}
           >
             <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-xl">D</span>
@@ -55,21 +117,67 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
             {navItems.map((item, index) => (
-              <motion.a
-                key={item.name}
-                href={item.href}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -2 }}
-                className={`font-medium transition-colors duration-300 ${
-                  isScrolled 
-                    ? 'text-text-dark hover:text-primary' 
-                    : 'text-white hover:text-secondary'
-                }`}
-              >
-                {item.name}
-              </motion.a>
+              <div key={item.name} className="relative">
+                {item.hasDropdown ? (
+                  <div className="relative">
+                    <motion.button
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      whileHover={{ y: -2 }}
+                      onClick={() => setIsServicesDropdownOpen(!isServicesDropdownOpen)}
+                      className={`font-medium transition-colors duration-300 flex items-center space-x-1 ${
+                        isScrolled 
+                          ? 'text-text-dark hover:text-primary' 
+                          : 'text-white hover:text-secondary'
+                      }`}
+                    >
+                      <span>{item.name}</span>
+                      <ChevronDownIcon className={`w-4 h-4 transition-transform duration-200 ${
+                        isServicesDropdownOpen ? 'rotate-180' : ''
+                      }`} />
+                    </motion.button>
+                    
+                    {/* Services Dropdown */}
+                    {isServicesDropdownOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-soft border border-gray-100 py-2"
+                      >
+                        {servicePages.map((service, idx) => (
+                          <motion.button
+                            key={service.name}
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: idx * 0.05 }}
+                            onClick={() => handleServiceClick(service.href)}
+                            className="w-full text-left px-4 py-3 text-text-dark hover:text-primary hover:bg-primary/5 transition-colors"
+                          >
+                            {service.name}
+                          </motion.button>
+                        ))}
+                      </motion.div>
+                    )}
+                  </div>
+                ) : (
+                  <motion.button
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    whileHover={{ y: -2 }}
+                    onClick={() => handleNavClick(item.href)}
+                    className={`font-medium transition-colors duration-300 ${
+                      isScrolled 
+                        ? 'text-text-dark hover:text-primary' 
+                        : 'text-white hover:text-secondary'
+                    }`}
+                  >
+                    {item.name}
+                  </motion.button>
+                )}
+              </div>
             ))}
           </nav>
 
@@ -81,8 +189,9 @@ const Header = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="hidden lg:block btn-primary"
+            onClick={openModal}
           >
-            Book Appointment
+            Programează-te
           </motion.button>
 
           {/* Mobile Menu Button */}
@@ -110,17 +219,47 @@ const Header = () => {
           >
             <div className="py-4 px-6 space-y-4">
               {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="block text-text-dark hover:text-primary font-medium transition-colors"
-                >
-                  {item.name}
-                </a>
+                <div key={item.name}>
+                  {item.hasDropdown ? (
+                    <div>
+                      <button
+                        onClick={() => setIsServicesDropdownOpen(!isServicesDropdownOpen)}
+                        className="flex items-center justify-between w-full text-text-dark hover:text-primary font-medium transition-colors"
+                      >
+                        <span>{item.name}</span>
+                        <ChevronDownIcon className={`w-4 h-4 transition-transform duration-200 ${
+                          isServicesDropdownOpen ? 'rotate-180' : ''
+                        }`} />
+                      </button>
+                      {isServicesDropdownOpen && (
+                        <div className="ml-4 mt-2 space-y-2">
+                          {servicePages.map((service) => (
+                            <button
+                              key={service.name}
+                              onClick={() => handleServiceClick(service.href)}
+                              className="block text-text-light hover:text-primary font-medium transition-colors text-left w-full"
+                            >
+                              {service.name}
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <button
+                      onClick={() => handleNavClick(item.href)}
+                      className="block text-text-dark hover:text-primary font-medium transition-colors text-left w-full"
+                    >
+                      {item.name}
+                    </button>
+                  )}
+                </div>
               ))}
-              <button className="w-full btn-primary mt-4">
-                Book Appointment
+              <button 
+                className="w-full btn-primary mt-4"
+                onClick={openModal}
+              >
+                Programează-te
               </button>
             </div>
           </motion.div>

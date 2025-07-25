@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   EnvelopeIcon, 
   PhoneIcon, 
@@ -9,31 +10,32 @@ import { useScrollAnimation, staggerContainer, fadeInUp } from '../hooks/useScro
 
 const Footer = () => {
   const { ref, isInView } = useScrollAnimation();
+  const navigate = useNavigate();
 
   const footerLinks = {
     services: [
-      'General Dentistry',
-      'Cosmetic Dentistry',
-      'Emergency Care',
-      'Family Dentistry',
-      'Teeth Whitening',
-      'Dental Implants'
+      'Stomatologie Generală',
+      'Stomatologie Cosmetica',
+      'Îngrijire de Urgență',
+      'Stomatologie de Familie',
+      'Albire Dentară',
+      'Implanturi Dentare'
     ],
     company: [
-      'About Us',
-      'Our Team',
-      'Testimonials',
-      'Careers',
-      'Blog',
+      'Despre Noi',
+      'Echipa Noastră',
+      'Testimoniale',
+      'Prețuri',
+      'Cariere',
       'Contact'
     ],
     support: [
-      'Help Center',
-      'Appointment Booking',
-      'Insurance Information',
-      'Payment Plans',
-      'Emergency Care',
-      'Patient Forms'
+      'Centru de Ajutor',
+      'Programarea Consultațiilor',
+      'Informații Asigurări',
+      'Planuri de Plată',
+      'Îngrijire de Urgență',
+      'Formulare Pacienți'
     ]
   };
 
@@ -44,9 +46,23 @@ const Footer = () => {
     { name: 'LinkedIn', url: 'https://linkedin.com', icon: '💼' }
   ];
 
+  const handleNavigation = (item) => {
+    if (item === 'Prețuri') {
+      navigate('/preturi');
+    } else if (item === 'Despre Noi') {
+      navigate('/#about');
+    } else if (item === 'Echipa Noastră') {
+      navigate('/#team');
+    } else if (item === 'Testimoniale') {
+      navigate('/#testimonials');
+    } else if (item === 'Contact') {
+      navigate('/#contact');
+    }
+  };
+
   return (
     <footer className="bg-text-dark text-white">
-      <div className="container-custom">
+      <div className="container-custom px-6">
         {/* Main Footer */}
         <motion.div
           ref={ref}
@@ -66,37 +82,36 @@ const Footer = () => {
               </span>
             </div>
             <p className="text-white/80 leading-relaxed">
-              Providing exceptional dental care with a focus on patient comfort, 
-              advanced technology, and personalized treatment plans.
+              Oferim îngrijire dentară excepțională cu focus pe confortul pacientului, 
+              tehnologie avansată și planuri de tratament personalizate.
             </p>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <PhoneIcon className="w-5 h-5 text-primary" />
-                <span className="text-white/80">+1 (555) 123-4567</span>
+                <span className="text-white/80">+40 (555) 123-4567</span>
               </div>
               <div className="flex items-center space-x-3">
                 <EnvelopeIcon className="w-5 h-5 text-primary" />
-                <span className="text-white/80">info@dentaire.com</span>
+                <span className="text-white/80">info@dentaire.ro</span>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPinIcon className="w-5 h-5 text-primary" />
-                <span className="text-white/80">123 Dental Street, City, State 12345</span>
+                <span className="text-white/80">Strada Dentală 123, București, România</span>
               </div>
             </div>
           </motion.div>
 
           {/* Services */}
           <motion.div variants={fadeInUp} className="space-y-6">
-            <h3 className="font-heading text-xl font-semibold">Our Services</h3>
+            <h3 className="font-heading text-xl font-semibold">Serviciile Noastre</h3>
             <ul className="space-y-3">
               {footerLinks.services.map((service, index) => (
                 <li key={index}>
-                  <a 
-                    href="#" 
-                    className="text-white/80 hover:text-primary transition-colors duration-300"
+                  <button 
+                    className="text-white/80 hover:text-primary transition-colors duration-300 text-left"
                   >
                     {service}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -104,16 +119,16 @@ const Footer = () => {
 
           {/* Company */}
           <motion.div variants={fadeInUp} className="space-y-6">
-            <h3 className="font-heading text-xl font-semibold">Company</h3>
+            <h3 className="font-heading text-xl font-semibold">Compania</h3>
             <ul className="space-y-3">
               {footerLinks.company.map((item, index) => (
                 <li key={index}>
-                  <a 
-                    href="#" 
-                    className="text-white/80 hover:text-primary transition-colors duration-300"
+                  <button 
+                    onClick={() => handleNavigation(item)}
+                    className="text-white/80 hover:text-primary transition-colors duration-300 text-left"
                   >
                     {item}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -121,16 +136,15 @@ const Footer = () => {
 
           {/* Support */}
           <motion.div variants={fadeInUp} className="space-y-6">
-            <h3 className="font-heading text-xl font-semibold">Support</h3>
+            <h3 className="font-heading text-xl font-semibold">Suport</h3>
             <ul className="space-y-3">
               {footerLinks.support.map((item, index) => (
                 <li key={index}>
-                  <a 
-                    href="#" 
-                    className="text-white/80 hover:text-primary transition-colors duration-300"
+                  <button 
+                    className="text-white/80 hover:text-primary transition-colors duration-300 text-left"
                   >
                     {item}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -147,7 +161,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* Copyright */}
             <div className="text-white/60 text-sm">
-              © 2024 Dentaire. All rights reserved.
+              © 2024 Dentaire. Toate drepturile rezervate.
             </div>
 
             {/* Social Links */}
@@ -169,15 +183,24 @@ const Footer = () => {
 
             {/* Policy Links */}
             <div className="flex space-x-6 text-sm">
-              <a href="/privacy" className="text-white/60 hover:text-primary transition-colors">
-                Privacy Policy
-              </a>
-              <a href="/terms" className="text-white/60 hover:text-primary transition-colors">
-                Terms of Service
-              </a>
-              <a href="/cookies" className="text-white/60 hover:text-primary transition-colors">
-                Cookie Policy
-              </a>
+              <button 
+                onClick={() => navigate('/politica-confidentialitate')}
+                className="text-white/60 hover:text-primary transition-colors"
+              >
+                Politica de Confidențialitate
+              </button>
+              <button 
+                onClick={() => navigate('/termeni-conditii')}
+                className="text-white/60 hover:text-primary transition-colors"
+              >
+                Termeni și Condiții
+              </button>
+              <button 
+                onClick={() => navigate('/politica-cookies')}
+                className="text-white/60 hover:text-primary transition-colors"
+              >
+                Politica de Cookie-uri
+              </button>
             </div>
           </div>
         </motion.div>

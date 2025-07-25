@@ -7,17 +7,17 @@ const About = () => {
   const { ref, isInView } = useScrollAnimation();
 
   const features = [
-    'Advanced dental technology and equipment',
-    'Experienced and certified dental professionals',
-    'Comfortable and relaxing environment',
-    'Comprehensive treatment plans',
-    'Emergency dental care available',
-    'Family-friendly dental services'
+    'Tehnologie și echipamente dentare avansate',
+    'Profesioniști dentari cu experiență și certificați',
+    'Mediu confortabil și relaxant',
+    'Planuri de tratament complete',
+    'Îngrijire dentară de urgență disponibilă',
+    'Servicii dentare prietenoase cu familia'
   ];
 
   return (
     <section id="about" className="section-padding bg-white" ref={ref}>
-      <div className="container-custom">
+      <div className="container-custom px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left - Image */}
           <motion.div
@@ -82,7 +82,7 @@ const About = () => {
               variants={fadeInUp}
               className="inline-flex items-center space-x-2 bg-primary/10 text-primary rounded-full px-4 py-2 text-sm font-medium"
             >
-              <span>+ ABOUT US</span>
+              <span>+ DESPRE NOI</span>
             </motion.div>
 
             {/* Heading */}
@@ -90,8 +90,8 @@ const About = () => {
               variants={fadeInUp}
               className="font-heading text-4xl lg:text-5xl font-bold text-text-dark"
             >
-              We Are Committed to
-              <span className="block text-primary">Your Dental Health</span>
+              Suntem Dedicați
+              <span className="block text-primary">Sănătății Tale Dentare</span>
             </motion.h2>
 
             {/* Description */}
@@ -99,9 +99,9 @@ const About = () => {
               variants={fadeInUp}
               className="text-lg text-text-light leading-relaxed"
             >
-              At Dentaire, we believe that everyone deserves access to high-quality dental care. 
-              Our team of experienced professionals is dedicated to providing comprehensive dental 
-              services in a comfortable and welcoming environment.
+              La Dentaire, credem că toată lumea merită acces la îngrijire dentară de înaltă calitate. 
+              Echipa noastră de profesioniști cu experiență este dedicată oferirii de servicii dentare 
+              complete într-un mediu confortabil și primitor.
             </motion.p>
 
             {/* Features List */}
@@ -135,14 +135,14 @@ const About = () => {
               whileTap={{ scale: 0.95 }}
               className="btn-primary"
             >
-              Learn More About Us
+              Află Mai Multe Despre Noi
             </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="btn-outline"
               >
-                Meet Our Team
+                Cunoaște Echipa Noastră
               </motion.button>
             </motion.div>
           </motion.div>

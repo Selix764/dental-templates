@@ -17,32 +17,32 @@ const Testimonials = () => {
   const testimonials = [
     {
       name: 'Sarah Johnson',
-      role: 'Patient',
+      role: 'Pacient',
       rating: 5,
-      text: 'The dental care I received at Dentaire was exceptional. The staff was professional, caring, and made me feel comfortable throughout my entire visit. I highly recommend their services!',
+      text: 'Îngrijirea dentară pe care am primit-o la Dentaire a fost excepțională. Personalul a fost profesional, grijuliu și m-a făcut să mă simt confortabil pe tot parcursul vizitei. Recomand cu încredere serviciile lor!',
       image: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="35" r="15" fill="%23fef3c7"/><path d="M25 80 Q50 60 75 80" fill="%23fef3c7"/><circle cx="40" cy="30" r="2" fill="%23f59e0b"/><circle cx="60" cy="30" r="2" fill="%23f59e0b"/><path d="M35 40 Q50 45 65 40" fill="none" stroke="%23f59e0b" stroke-width="1"/></svg>'
     },
     {
       name: 'Michael Chen',
-      role: 'Patient',
+      role: 'Pacient',
       rating: 5,
-      text: 'Dr. Sarah and her team are amazing! They took the time to explain everything clearly and made sure I was comfortable during my treatment. The results exceeded my expectations.',
+      text: 'Dr. Sarah și echipa ei sunt uimitoare! Au luat timpul să explice totul clar și s-au asigurat că eram confortabil în timpul tratamentului. Rezultatele au depășit așteptările mele.',
       image: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="35" r="15" fill="%23e5f3ff"/><path d="M25 80 Q50 60 75 80" fill="%23e5f3ff"/><circle cx="40" cy="30" r="2" fill="%230ea5e9"/><circle cx="60" cy="30" r="2" fill="%230ea5e9"/><path d="M35 40 Q50 45 65 40" fill="none" stroke="%230ea5e9" stroke-width="1"/></svg>'
     },
     {
       name: 'Emily Rodriguez',
-      role: 'Patient',
+      role: 'Pacient',
       rating: 5,
-      text: 'I was nervous about my dental procedure, but the team at Dentaire made me feel so relaxed. Their expertise and gentle approach made all the difference. Thank you!',
+      text: 'Eram nervoasă în legătură cu procedura dentară, dar echipa de la Dentaire m-a făcut să mă simt atât de relaxată. Expertiza și abordarea lor blândă au făcut toată diferența. Mulțumesc!',
       image: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="35" r="15" fill="%23f3e8ff"/><path d="M25 80 Q50 60 75 80" fill="%23f3e8ff"/><circle cx="40" cy="30" r="2" fill="%238b5cf6"/><circle cx="60" cy="30" r="2" fill="%238b5cf6"/><path d="M35 40 Q50 45 65 40" fill="none" stroke="%238b5cf6" stroke-width="1"/></svg>'
     }
   ];
 
   const stats = [
-    { number: '15+', label: 'Years Experience', icon: StarIcon },
-    { number: '5000+', label: 'Happy Patients', icon: HeartIcon },
-    { number: '100%', label: 'Satisfaction Rate', icon: ShieldCheckIcon },
-    { number: '24/7', label: 'Emergency Care', icon: UserGroupIcon }
+    { number: '15+', label: 'Ani de Experiență', icon: StarIcon },
+    { number: '5000+', label: 'Pacienți Mulțumiți', icon: HeartIcon },
+    { number: '100%', label: 'Rată de Satisfacție', icon: ShieldCheckIcon },
+    { number: '24/7', label: 'Îngrijire de Urgență', icon: UserGroupIcon }
   ];
 
   const nextTestimonial = () => {
@@ -66,7 +66,7 @@ const Testimonials = () => {
           backgroundImage: `url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><pattern id="quote-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><text x="50" y="50" text-anchor="middle" dy=".35em" font-family="serif" font-size="40" fill="%230ea5e9">"</text></pattern></defs><rect width="100%" height="100%" fill="url(%23quote-pattern)"/></svg>')`
         }}
       ></div>
-      <div className="container-custom relative z-10">
+      <div className="container-custom px-6 relative z-10">
         {/* Header */}
         <motion.div
           ref={ref}
@@ -79,21 +79,21 @@ const Testimonials = () => {
             variants={fadeInUp}
             className="inline-flex items-center space-x-2 bg-primary/10 text-primary rounded-full px-4 py-2 text-sm font-medium mb-4"
           >
-            <span>+ TESTIMONIALS</span>
+            <span>+ TESTIMONIALE</span>
           </motion.div>
           <motion.h2
             variants={fadeInUp}
             className="font-heading text-4xl lg:text-5xl font-bold text-text-dark mb-6"
           >
-            What Our Patients
-            <span className="block text-primary">Say About Us</span>
+            Ce Spun Pacienții Noștri
+            <span className="block text-primary">Despre Noi</span>
           </motion.h2>
           <motion.p
             variants={fadeInUp}
             className="text-lg text-text-light max-w-2xl mx-auto"
           >
-            Read testimonials from our satisfied patients who have experienced 
-            exceptional dental care and outstanding service at Dentaire.
+            Citește testimonialele pacienților noștri mulțumiți care au experimentat 
+            îngrijire dentară excepțională și serviciu remarcabil la Dentaire.
           </motion.p>
         </motion.div>
 

@@ -39,40 +39,40 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: PhoneIcon,
-      title: 'Phone Number',
-      value: '+1 (555) 123-4567',
-      description: 'Call us anytime'
+      title: 'Numărul de Telefon',
+      value: '+40 (555) 123-4567',
+      description: 'Sune-ne oricând'
     },
     {
       icon: EnvelopeIcon,
-      title: 'Email Address',
-      value: 'info@dentaire.com',
-      description: 'Send us an email'
+      title: 'Adresa de Email',
+      value: 'info@dentaire.ro',
+      description: 'Trimite-ne un email'
     },
     {
       icon: MapPinIcon,
-      title: 'Office Address',
-      value: '123 Dental Street, City, State 12345',
-      description: 'Visit our clinic'
+      title: 'Adresa Biroului',
+      value: 'Strada Dentală 123, București, România',
+      description: 'Vizitează-ne clinica'
     },
     {
       icon: ClockIcon,
-      title: 'Working Hours',
-      value: 'Mon-Fri: 8AM-6PM, Sat: 9AM-3PM',
-      description: 'Emergency care 24/7'
+      title: 'Program de Lucru',
+      value: 'Lun-Vin: 8AM-6PM, Sâm: 9AM-3PM',
+      description: 'Îngrijire de urgență 24/7'
     }
   ];
 
   const stats = [
-    { number: '15+', label: 'Years Experience', icon: StarIcon },
-    { number: '5000+', label: 'Happy Patients', icon: HeartIcon },
-    { number: '100%', label: 'Satisfaction Rate', icon: ShieldCheckIcon },
-    { number: '24/7', label: 'Emergency Care', icon: UserGroupIcon }
+    { number: '15+', label: 'Ani de Experiență', icon: StarIcon },
+    { number: '5000+', label: 'Pacienți Mulțumiți', icon: HeartIcon },
+    { number: '100%', label: 'Rată de Satisfacție', icon: ShieldCheckIcon },
+    { number: '24/7', label: 'Îngrijire de Urgență', icon: UserGroupIcon }
   ];
 
   return (
     <section id="contact" className="section-padding bg-light-gray">
-      <div className="container-custom">
+      <div className="container-custom px-6">
         {/* Header */}
         <motion.div
           ref={ref}
@@ -85,21 +85,21 @@ const Contact = () => {
             variants={fadeInUp}
             className="inline-flex items-center space-x-2 bg-primary/10 text-primary rounded-full px-4 py-2 text-sm font-medium mb-4"
           >
-            <span>+ CONTACT US</span>
+            <span>+ CONTACTEAZĂ-NE</span>
           </motion.div>
           <motion.h2
             variants={fadeInUp}
             className="font-heading text-4xl lg:text-5xl font-bold text-text-dark mb-6"
           >
-            Get In Touch
-            <span className="block text-primary">With Our Team</span>
+            Ia Legătura
+            <span className="block text-primary">Cu Echipa Noastră</span>
           </motion.h2>
           <motion.p
             variants={fadeInUp}
             className="text-lg text-text-light max-w-2xl mx-auto"
           >
-            Ready to start your journey to a healthier smile? Contact us today 
-            to schedule your appointment or ask any questions.
+            Gata să începi călătoria spre un zâmbet mai sănătos? Contactează-ne astăzi 
+            pentru a-ți programa programarea sau pentru a pune orice întrebări.
           </motion.p>
         </motion.div>
 
@@ -112,14 +112,14 @@ const Contact = () => {
             className="bg-white rounded-2xl p-8 shadow-soft"
           >
             <h3 className="font-heading text-2xl font-semibold text-text-dark mb-6">
-              Send Us a Message
+              Trimite-ne un Mesaj
             </h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-text-dark mb-2">
-                    Full Name *
+                    Numele Complet *
                   </label>
                   <input
                     type="text"
@@ -129,13 +129,13 @@ const Contact = () => {
                     onChange={handleInputChange}
                     required
                     className="w-full px-4 py-3 border border-border-gray rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
-                    placeholder="Enter your full name"
+                    placeholder="Introduceți numele complet"
                   />
                 </div>
                 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-text-dark mb-2">
-                    Email Address *
+                    Adresa de Email *
                   </label>
                   <input
                     type="email"
@@ -145,7 +145,7 @@ const Contact = () => {
                     onChange={handleInputChange}
                     required
                     className="w-full px-4 py-3 border border-border-gray rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
-                    placeholder="Enter your email"
+                    placeholder="Introduceți adresa de email"
                   />
                 </div>
               </div>
@@ -153,7 +153,7 @@ const Contact = () => {
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium text-text-dark mb-2">
-                    Phone Number
+                    Numărul de Telefon
                   </label>
                   <input
                     type="tel"
@@ -162,7 +162,7 @@ const Contact = () => {
                     value={formData.phone}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 border border-border-gray rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
-                    placeholder="Enter your phone number"
+                    placeholder="Introduceți numărul de telefon"
                   />
                 </div>
                 

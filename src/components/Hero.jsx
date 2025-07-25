@@ -2,8 +2,11 @@ import React from 'react';
 import { StarIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
 import { slideInLeft, slideInRight, fadeInUp } from '../hooks/useScrollAnimation';
+import { useAppointment } from '../context/AppointmentContext';
 
 const Hero = () => {
+  const { openModal } = useAppointment();
+  
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background Image */}
@@ -17,7 +20,7 @@ const Hero = () => {
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/40"></div>
       
-      <div className="container-custom relative z-10">
+      <div className="container-custom px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <motion.div
@@ -33,7 +36,7 @@ const Hero = () => {
               className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 text-sm font-medium"
             >
               <StarIcon className="w-4 h-4 text-yellow-300" />
-              <span>+ WELCOME TO DENTAIRE</span>
+              <span>+ BUN VENIT LA DENTAIRE</span>
             </motion.div>
 
             {/* Main Heading */}
@@ -41,9 +44,9 @@ const Hero = () => {
               variants={fadeInUp}
               className="font-heading text-5xl lg:text-6xl font-bold leading-tight"
             >
-              Professional
-              <span className="block text-secondary">Dental Care</span>
-              For Your Family
+              Îngrijire Dentară
+              <span className="block text-secondary">Profesională</span>
+              Pentru Familia Ta
             </motion.h1>
 
             {/* Description */}
@@ -51,8 +54,8 @@ const Hero = () => {
               variants={fadeInUp}
               className="text-lg text-white/90 max-w-lg"
             >
-              Experience world-class dental care in a comfortable and relaxing environment. 
-              Our team of experts is dedicated to your oral health and beautiful smile.
+              Experimentează îngrijirea dentară de clasă mondială într-un mediu confortabil și relaxant. 
+              Echipa noastră de experți este dedicată sănătății orale și zâmbetului tău frumos.
             </motion.p>
 
             {/* Rating */}
@@ -65,7 +68,7 @@ const Hero = () => {
                   <StarIcon key={i} className="w-5 h-5 text-yellow-300 fill-current" />
                 ))}
               </div>
-              <span className="text-white/80">4.9 (2,500+ Reviews)</span>
+              <span className="text-white/80">4.9 (2,500+ Recenzii)</span>
             </motion.div>
 
             {/* CTA Buttons */}
@@ -77,15 +80,16 @@ const Hero = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="btn-primary"
+                onClick={openModal}
               >
-                Book Appointment
+                Programează-te
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="btn-outline text-white border-white hover:bg-white hover:text-primary"
               >
-                Learn More
+                Află Mai Multe
               </motion.button>
             </motion.div>
           </motion.div>
