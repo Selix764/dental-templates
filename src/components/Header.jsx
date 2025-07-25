@@ -14,12 +14,20 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      // Force scrolled state on non-home pages
+      if (window.location.pathname !== '/') {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(window.scrollY > 50);
+      }
     };
 
+    // Set initial state
+    handleScroll();
+    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [window.location.pathname]);
 
   // Handle click outside mobile menu
   useEffect(() => {
@@ -90,6 +98,13 @@ const Header = () => {
           }, 100);
         }
       }
+    } else if (href === '/') {
+      // If clicking home button and already on home page, scroll to top
+      if (window.location.pathname === '/') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        navigate(href);
+      }
     } else {
       // Handle regular routes
       navigate(href);
@@ -110,9 +125,9 @@ const Header = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white shadow-medium' 
-          : 'bg-white lg:bg-transparent'
+        window.location.pathname === '/'
+          ? (isScrolled ? 'bg-white shadow-medium' : 'bg-white lg:bg-transparent')
+          : 'bg-white shadow-medium'
       }`}
     >
       <div className="container-custom">
@@ -121,13 +136,21 @@ const Header = () => {
           <motion.div
             whileHover={{ scale: 1.05 }}
             className="flex items-center space-x-2 cursor-pointer"
-            onClick={() => navigate('/')}
+            onClick={() => {
+              if (window.location.pathname === '/') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              } else {
+                navigate('/');
+              }
+            }}
           >
             <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-xl">D</span>
             </div>
             <span className={`font-heading font-bold text-2xl ${
-              isScrolled ? 'text-primary' : 'text-primary lg:text-white'
+              window.location.pathname === '/' 
+                ? (isScrolled ? 'text-primary' : 'text-primary lg:text-white')
+                : 'text-primary'
             }`}>
               Dentaire
             </span>
@@ -146,9 +169,11 @@ const Header = () => {
                       whileHover={{ y: -2 }}
                       onClick={() => setIsServicesDropdownOpen(!isServicesDropdownOpen)}
                       className={`font-medium transition-colors duration-300 flex items-center space-x-1 ${
-                        isScrolled 
-                          ? 'text-text-dark hover:text-primary' 
-                          : 'text-white hover:text-secondary'
+                        window.location.pathname === '/'
+                          ? (isScrolled 
+                              ? 'text-text-dark hover:text-primary' 
+                              : 'text-white hover:text-secondary')
+                          : 'text-text-dark hover:text-primary'
                       }`}
                     >
                       <span>{item.name}</span>
@@ -188,9 +213,11 @@ const Header = () => {
                     whileHover={{ y: -2 }}
                     onClick={() => handleNavClick(item.href)}
                     className={`font-medium transition-colors duration-300 ${
-                      isScrolled 
-                        ? 'text-text-dark hover:text-primary' 
-                        : 'text-white hover:text-secondary'
+                      window.location.pathname === '/'
+                        ? (isScrolled 
+                            ? 'text-text-dark hover:text-primary' 
+                            : 'text-white hover:text-secondary')
+                        : 'text-text-dark hover:text-primary'
                     }`}
                   >
                     {item.name}
@@ -217,7 +244,9 @@ const Header = () => {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={`lg:hidden p-2 rounded-lg transition-colors ${
-              isScrolled ? 'text-text-dark' : 'text-text-dark lg:text-white'
+              window.location.pathname === '/'
+                ? (isScrolled ? 'text-text-dark' : 'text-text-dark lg:text-white')
+                : 'text-text-dark'
             }`}
           >
             {isMobileMenuOpen ? (

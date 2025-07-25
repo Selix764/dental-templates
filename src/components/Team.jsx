@@ -16,7 +16,7 @@ const Team = () => {
       name: 'Dr. Sarah Johnson',
       specialty: 'Stomatologie Generală',
       experience: '15+ Ani',
-      image: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="35" r="15" fill="%23e5f3ff"/><path d="M25 80 Q50 60 75 80" fill="%23e5f3ff"/><circle cx="40" cy="30" r="2" fill="%230ea5e9"/><circle cx="60" cy="30" r="2" fill="%230ea5e9"/><path d="M35 40 Q50 45 65 40" fill="none" stroke="%230ea5e9" stroke-width="1"/></svg>',
+      image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&h=200&fit=crop&crop=face',
       rating: 4.9,
       reviews: 250
     },
@@ -24,7 +24,7 @@ const Team = () => {
       name: 'Dr. Michael Chen',
       specialty: 'Ortodonție',
       experience: '12+ Ani',
-      image: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="35" r="15" fill="%23f0f9ff"/><path d="M25 80 Q50 60 75 80" fill="%23f0f9ff"/><circle cx="40" cy="30" r="2" fill="%2306b6d4"/><circle cx="60" cy="30" r="2" fill="%2306b6d4"/><path d="M35 40 Q50 45 65 40" fill="none" stroke="%2306b6d4" stroke-width="1"/></svg>',
+      image: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=200&h=200&fit=crop&crop=face',
       rating: 4.8,
       reviews: 180
     },
@@ -32,7 +32,7 @@ const Team = () => {
       name: 'Dr. Emily Rodriguez',
       specialty: 'Stomatologie Pediatrică',
       experience: '10+ Ani',
-      image: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="35" r="15" fill="%23fef3c7"/><path d="M25 80 Q50 60 75 80" fill="%23fef3c7"/><circle cx="40" cy="30" r="2" fill="%23f59e0b"/><circle cx="60" cy="30" r="2" fill="%23f59e0b"/><path d="M35 40 Q50 45 65 40" fill="none" stroke="%23f59e0b" stroke-width="1"/></svg>',
+      image: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=200&h=200&fit=crop&crop=face',
       rating: 4.9,
       reviews: 320
     },
@@ -40,7 +40,7 @@ const Team = () => {
       name: 'Dr. David Thompson',
       specialty: 'Chirurgie Orală',
       experience: '18+ Ani',
-      image: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="35" r="15" fill="%23f3e8ff"/><path d="M25 80 Q50 60 75 80" fill="%23f3e8ff"/><circle cx="40" cy="30" r="2" fill="%238b5cf6"/><circle cx="60" cy="30" r="2" fill="%238b5cf6"/><path d="M35 40 Q50 45 65 40" fill="none" stroke="%238b5cf6" stroke-width="1"/></svg>',
+      image: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&h=200&fit=crop&crop=face',
       rating: 4.7,
       reviews: 150
     }
@@ -150,7 +150,7 @@ const Team = () => {
             whileTap={{ scale: 0.95 }}
             className="btn-primary"
           >
-            View All Team Members
+            Vezi Toată Echipa
           </motion.button>
         </motion.div>
 

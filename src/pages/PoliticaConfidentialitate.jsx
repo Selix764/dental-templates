@@ -78,28 +78,18 @@ const PoliticaConfidentialitate = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <div className="bg-primary text-white py-16">
+      <div className="bg-primary text-white py-16 pt-24">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-center"
           >
-            <motion.button
-              onClick={() => window.history.back()}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center space-x-2 text-white/80 hover:text-white mb-8 transition-colors"
-            >
-              <ArrowLeftIcon className="w-5 h-5" />
-              <span>Înapoi</span>
-            </motion.button>
-            
             <h1 className="font-heading text-5xl lg:text-6xl font-bold mb-6">
               Politica de Confidențialitate
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              Protejarea datelor dumneavoastră personale este o prioritate pentru noi
+              Protejăm informațiile dumneavoastră personale cu cele mai înalte standarde de securitate
             </p>
           </motion.div>
         </div>

@@ -124,27 +124,6 @@ const About = () => {
                 </motion.div>
               ))}
             </motion.div>
-
-            {/* CTA Button */}
-            <motion.div
-              variants={fadeInUp}
-              className="flex flex-col sm:flex-row gap-4"
-            >
-                          <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="btn-primary"
-            >
-              Află Mai Multe Despre Noi
-            </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="btn-outline"
-              >
-                Cunoaște Echipa Noastră
-              </motion.button>
-            </motion.div>
           </motion.div>
         </div>
       </div>

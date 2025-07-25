@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeftIcon } from '@heroicons/react/24/outline';
+import { CheckIcon } from '@heroicons/react/24/outline';
 import { useScrollAnimation, fadeInUp } from '../hooks/useScrollAnimation';
 import { useAppointment } from '../context/AppointmentContext';
-import { useNavigate } from 'react-router-dom';
 import { useScrollToTop } from '../hooks/useScrollToTop';
+import { useNavigate } from 'react-router-dom';
 
 const PricingPage = () => {
   const { ref, isInView } = useScrollAnimation();
@@ -100,28 +100,18 @@ const PricingPage = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <div className="bg-primary text-white py-16">
+      <div className="bg-primary text-white py-16 pt-24">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-center"
           >
-            <motion.button
-              onClick={() => window.history.back()}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center space-x-2 text-white/80 hover:text-white mb-8 transition-colors"
-            >
-              <ArrowLeftIcon className="w-5 h-5" />
-              <span>Înapoi la servicii</span>
-            </motion.button>
-            
             <h1 className="font-heading text-5xl lg:text-6xl font-bold mb-6">
-              Prețuri
+              Prețuri și Pachete
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              Prețuri transparente și competitive pentru toate serviciile noastre dentare.
+              Transparență totală în prețuri cu pachete personalizate pentru fiecare nevoie dentară.
             </p>
           </motion.div>
         </div>
