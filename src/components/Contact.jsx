@@ -114,50 +114,8 @@ const Contact = () => {
           </motion.p>
         </motion.div>
 
-        {/* Part 1: Contact Information */}
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          className="mb-16"
-        >
-          <div className="text-center mb-12">
-            <h3 className="font-heading text-3xl font-bold text-text-dark mb-4">
-              Informații de Contact
-            </h3>
-            <p className="text-lg text-text-light max-w-2xl mx-auto">
-              Suntem aici să răspundem la întrebările tale și să te ajutăm să-ți programezi vizita.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {contactInfo.map((info, index) => (
-              <motion.div
-                key={info.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-xl p-6 shadow-soft text-center"
-              >
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <info.icon className="w-6 h-6 text-primary" />
-                </div>
-                <h4 className="font-heading text-lg font-semibold text-text-dark mb-2">
-                  {info.title}
-                </h4>
-                <p className="text-primary font-medium mb-2">
-                  {info.value}
-                </p>
-                <p className="text-text-light text-sm">
-                  {info.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Part 2: Contact Form and Location */}
-        <div className="grid lg:grid-cols-2 gap-16">
+        {/* Part 2: Contact Form and Information */}
+        <div className="grid lg:grid-cols-2 gap-16 mb-16">
           {/* Contact Form */}
           <motion.div
             variants={fadeInUp}
@@ -261,82 +219,105 @@ const Contact = () => {
                 type="submit"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-full btn-primary"
+                className="mx-auto btn-primary"
               >
                 Trimite Mesajul
               </motion.button>
             </form>
           </motion.div>
 
-          {/* Location Information */}
+          {/* Contact Information */}
           <motion.div
             variants={fadeInUp}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            className="space-y-8"
+            className="bg-white rounded-2xl p-8 shadow-soft"
           >
-            {/* Location Details */}
-            <div className="bg-white rounded-xl p-6 shadow-soft">
-              <h4 className="font-heading text-xl font-semibold text-text-dark mb-4">
-                Locația Noastră
-              </h4>
-              <div className="space-y-4">
-                <div className="flex items-start space-x-3">
-                  <MapPinIcon className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                  <div>
-                    <p className="font-medium text-text-dark">Adresa Clinicii</p>
-                    <p className="text-text-light">Strada Dentală 123, București, România</p>
-                  </div>
+            <h3 className="font-heading text-2xl font-semibold text-text-dark mb-6">
+              Locația Noastră
+            </h3>
+            <div className="space-y-8">
+              <div className="flex items-start space-x-4">
+                <MapPinIcon className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
+                <div>
+                  <p className="font-medium text-text-dark text-lg">Adresa Clinicii</p>
+                  <p className="text-text-light">Strada Dentală 123, București, România</p>
                 </div>
-                <div className="flex items-start space-x-3">
-                  <ClockIcon className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                  <div>
-                    <p className="font-medium text-text-dark">Program de Lucru</p>
-                    <p className="text-text-light">Luni-Vineri: 08:00-18:00</p>
-                    <p className="text-text-light">Sâmbătă: 09:00-15:00</p>
-                    <p className="text-text-light">Duminică: Închis</p>
-                  </div>
+              </div>
+              <div className="flex items-start space-x-4">
+                <ClockIcon className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
+                <div>
+                  <p className="font-medium text-text-dark text-lg">Program de Lucru</p>
+                  <p className="text-text-light">Luni-Vineri: 08:00-18:00</p>
+                  <p className="text-text-light">Sâmbătă: 09:00-15:00</p>
+                  <p className="text-text-light">Duminică: Închis</p>
                 </div>
-                <div className="flex items-start space-x-3">
-                  <PhoneIcon className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                  <div>
-                    <p className="font-medium text-text-dark">Urgențe</p>
-                    <p className="text-text-light">24/7 - +40 (555) 123-4567</p>
-                  </div>
+              </div>
+              <div className="flex items-start space-x-4">
+                <PhoneIcon className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
+                <div>
+                  <p className="font-medium text-text-dark text-lg">Urgențe</p>
+                  <p className="text-text-light">24/7 - +40 (555) 123-4567</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-4">
+                <EnvelopeIcon className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
+                <div>
+                  <p className="font-medium text-text-dark text-lg">Email</p>
+                  <p className="text-text-light">info@dentaire.ro</p>
+                  <p className="text-text-light">programari@dentaire.ro</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-4">
+                <ShieldCheckIcon className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
+                <div>
+                  <p className="font-medium text-text-dark text-lg">Asigurări</p>
+                  <p className="text-text-light">Colaborăm cu majoritatea asigurătorilor</p>
+                  <p className="text-text-light">Plăți în rate disponibile</p>
                 </div>
               </div>
             </div>
-
-            {/* Google Maps Integration */}
-            <motion.div
-              variants={fadeInUp}
-              className="bg-white rounded-xl p-6 shadow-soft"
-            >
-              <h4 className="font-heading text-xl font-semibold text-text-dark mb-4">
-                Găsește-ne pe Hartă
-              </h4>
-              <div className="w-full h-64 lg:h-80 rounded-lg overflow-hidden shadow-soft">
-                <iframe
-                  src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=ro&amp;q=Strada%20Dentala%20123%20Bucuresti%20Romania&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen=""
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Locația Clinicii Dentaire"
-                  className="w-full h-full"
-                ></iframe>
-              </div>
-              <div className="mt-4 text-center">
-                <p className="text-text-light text-sm">
-                  <MapPinIcon className="w-4 h-4 inline mr-1 text-primary" />
-                  Strada Dentală 123, București, România
-                </p>
-              </div>
-            </motion.div>
           </motion.div>
         </div>
+
+        {/* Part 3: Map Section */}
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="mb-16"
+        >
+          <div className="text-center mb-8">
+            <h3 className="font-heading text-3xl font-bold text-text-dark mb-4">
+              Găsește-ne pe Hartă
+            </h3>
+            <p className="text-lg text-text-light max-w-2xl mx-auto">
+              Vizitează-ne clinica în centrul Bucureștiului, ușor accesibilă cu transportul public.
+            </p>
+          </div>
+          
+          <div className="bg-white rounded-2xl p-8 shadow-soft">
+            <div className="w-full h-96 rounded-lg overflow-hidden shadow-soft">
+              <iframe
+                src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=ro&amp;q=Strada%20Dentala%20123%20Bucuresti%20Romania&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Locația Clinicii Dentaire"
+                className="w-full h-full"
+              ></iframe>
+            </div>
+            <div className="mt-4 text-center">
+              <p className="text-text-light text-sm">
+                <MapPinIcon className="w-4 h-4 inline mr-1 text-primary" />
+                Strada Dentală 123, București, România
+              </p>
+            </div>
+          </div>
+        </motion.div>
 
         {/* Stats Section */}
         <motion.div
