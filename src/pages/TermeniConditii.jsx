@@ -2,14 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeftIcon, CheckIcon } from '@heroicons/react/24/outline';
 import { useScrollAnimation, fadeInUp } from '../hooks/useScrollAnimation';
-import { useAppointment } from '../context/AppointmentContext';
-import { useNavigate } from 'react-router-dom';
 import { useScrollToTop } from '../hooks/useScrollToTop';
 
 const TermeniConditii = () => {
   const { ref, isInView } = useScrollAnimation();
-  const { openModal } = useAppointment();
-  const navigate = useNavigate();
   
   // Ensure page scrolls to top
   useScrollToTop();
