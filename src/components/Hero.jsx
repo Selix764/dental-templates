@@ -20,7 +20,7 @@ const Hero = () => {
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/40"></div>
       
-      <div className="container-custom px-6 relative z-10">
+              <div className="container-custom relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <motion.div

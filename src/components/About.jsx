@@ -17,7 +17,7 @@ const About = () => {
 
   return (
     <section id="about" className="section-padding bg-white" ref={ref}>
-      <div className="container-custom px-6">
+      <div className="container-custom">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left - Image */}
           <motion.div

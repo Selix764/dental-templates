@@ -58,7 +58,7 @@ const Contact = () => {
     {
       icon: ClockIcon,
       title: 'Program de Lucru',
-      value: 'Lun-Vin: 8AM-6PM, Sâm: 9AM-3PM',
+      value: 'Lun-Vin: 08:00-18:00, Sâm: 09:00-15:00',
       description: 'Îngrijire de urgență 24/7'
     }
   ];
@@ -70,9 +70,20 @@ const Contact = () => {
     { number: '24/7', label: 'Îngrijire de Urgență', icon: UserGroupIcon }
   ];
 
+  const services = [
+    { value: 'general', label: 'Stomatologie Generală' },
+    { value: 'cosmetic', label: 'Stomatologie Cosmetica' },
+    { value: 'emergency', label: 'Îngrijire de Urgență' },
+    { value: 'family', label: 'Stomatologie de Familie' },
+    { value: 'orthodontics', label: 'Ortodonție' },
+    { value: 'prosthetics', label: 'Protetică' },
+    { value: 'implantology', label: 'Implantologie' },
+    { value: 'endodontics', label: 'Endodonție' }
+  ];
+
   return (
     <section id="contact" className="section-padding bg-light-gray">
-      <div className="container-custom px-6">
+      <div className="container-custom">
         {/* Header */}
         <motion.div
           ref={ref}
@@ -103,6 +114,49 @@ const Contact = () => {
           </motion.p>
         </motion.div>
 
+        {/* Part 1: Contact Information */}
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="mb-16"
+        >
+          <div className="text-center mb-12">
+            <h3 className="font-heading text-3xl font-bold text-text-dark mb-4">
+              Informații de Contact
+            </h3>
+            <p className="text-lg text-text-light max-w-2xl mx-auto">
+              Suntem aici să răspundem la întrebările tale și să te ajutăm să-ți programezi vizita.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {contactInfo.map((info, index) => (
+              <motion.div
+                key={info.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white rounded-xl p-6 shadow-soft text-center"
+              >
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <info.icon className="w-6 h-6 text-primary" />
+                </div>
+                <h4 className="font-heading text-lg font-semibold text-text-dark mb-2">
+                  {info.title}
+                </h4>
+                <p className="text-primary font-medium mb-2">
+                  {info.value}
+                </p>
+                <p className="text-text-light text-sm">
+                  {info.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Part 2: Contact Form and Location */}
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Contact Form */}
           <motion.div
@@ -168,7 +222,7 @@ const Contact = () => {
                 
                 <div>
                   <label htmlFor="service" className="block text-sm font-medium text-text-dark mb-2">
-                    Service Interested In
+                    Serviciul de Interes
                   </label>
                   <select
                     id="service"
@@ -177,18 +231,19 @@ const Contact = () => {
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 border border-border-gray rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
                   >
-                    <option value="">Select a service</option>
-                    <option value="general">General Dentistry</option>
-                    <option value="cosmetic">Cosmetic Dentistry</option>
-                    <option value="emergency">Emergency Care</option>
-                    <option value="family">Family Dentistry</option>
+                    <option value="">Selectați un serviciu</option>
+                    {services.map((service) => (
+                      <option key={service.value} value={service.value}>
+                        {service.label}
+                      </option>
+                    ))}
                   </select>
                 </div>
               </div>
 
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-text-dark mb-2">
-                  Message *
+                  Mesajul *
                 </label>
                 <textarea
                   id="message"
@@ -197,8 +252,8 @@ const Contact = () => {
                   onChange={handleInputChange}
                   required
                   rows={4}
-                  className="w-full px-4 py-3 border border-border-gray rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
-                  placeholder="Tell us about your dental care needs"
+                  className="w-full px-4 py-3 border border-border-gray rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors resize-none"
+                  placeholder="Spuneți-ne despre nevoile dumneavoastră de îngrijire dentară"
                 />
               </div>
 
@@ -208,46 +263,48 @@ const Contact = () => {
                 whileTap={{ scale: 0.95 }}
                 className="w-full btn-primary"
               >
-                Send Message
+                Trimite Mesajul
               </motion.button>
             </form>
           </motion.div>
 
-          {/* Contact Information */}
+          {/* Location Information */}
           <motion.div
             variants={fadeInUp}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             className="space-y-8"
           >
-            {/* Contact Info Cards */}
-            <div className="space-y-6">
-              {contactInfo.map((info, index) => (
-                <motion.div
-                  key={info.title}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-white rounded-xl p-6 shadow-soft"
-                >
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                      <info.icon className="w-6 h-6 text-primary" />
-                    </div>
-                    <div>
-                      <h4 className="font-heading text-lg font-semibold text-text-dark mb-1">
-                        {info.title}
-                      </h4>
-                      <p className="text-primary font-medium mb-1">
-                        {info.value}
-                      </p>
-                      <p className="text-text-light text-sm">
-                        {info.description}
-                      </p>
-                    </div>
+            {/* Location Details */}
+            <div className="bg-white rounded-xl p-6 shadow-soft">
+              <h4 className="font-heading text-xl font-semibold text-text-dark mb-4">
+                Locația Noastră
+              </h4>
+              <div className="space-y-4">
+                <div className="flex items-start space-x-3">
+                  <MapPinIcon className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-medium text-text-dark">Adresa Clinicii</p>
+                    <p className="text-text-light">Strada Dentală 123, București, România</p>
                   </div>
-                </motion.div>
-              ))}
+                </div>
+                <div className="flex items-start space-x-3">
+                  <ClockIcon className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-medium text-text-dark">Program de Lucru</p>
+                    <p className="text-text-light">Luni-Vineri: 08:00-18:00</p>
+                    <p className="text-text-light">Sâmbătă: 09:00-15:00</p>
+                    <p className="text-text-light">Duminică: Închis</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <PhoneIcon className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-medium text-text-dark">Urgențe</p>
+                    <p className="text-text-light">24/7 - +40 (555) 123-4567</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* Google Maps Integration */}
@@ -255,26 +312,26 @@ const Contact = () => {
               variants={fadeInUp}
               className="bg-white rounded-xl p-6 shadow-soft"
             >
-              <h4 className="font-heading text-lg font-semibold text-text-dark mb-4">
-                Our Location
+              <h4 className="font-heading text-xl font-semibold text-text-dark mb-4">
+                Găsește-ne pe Hartă
               </h4>
               <div className="w-full h-64 lg:h-80 rounded-lg overflow-hidden shadow-soft">
                 <iframe
-                  src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=dental%20clinic&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                  src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=ro&amp;q=Strada%20Dentala%20123%20Bucuresti%20Romania&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen=""
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Dentaire Dental Clinic Location"
+                  title="Locația Clinicii Dentaire"
                   className="w-full h-full"
                 ></iframe>
               </div>
               <div className="mt-4 text-center">
                 <p className="text-text-light text-sm">
                   <MapPinIcon className="w-4 h-4 inline mr-1 text-primary" />
-                  123 Dental Street, City, State 12345
+                  Strada Dentală 123, București, România
                 </p>
               </div>
             </motion.div>

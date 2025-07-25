@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Bars3Icon, XMarkIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
@@ -10,6 +10,7 @@ const Header = () => {
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
   const { openModal } = useAppointment();
   const navigate = useNavigate();
+  const mobileMenuRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,6 +20,24 @@ const Header = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Handle click outside mobile menu
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
+        setIsMobileMenuOpen(false);
+        setIsServicesDropdownOpen(false);
+      }
+    };
+
+    if (isMobileMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMobileMenuOpen]);
 
   const servicePages = [
     { name: 'Estetică Dentară', href: '/estetica-dentara' },
@@ -93,10 +112,10 @@ const Header = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
           ? 'bg-white shadow-medium' 
-          : 'bg-transparent'
+          : 'bg-white lg:bg-transparent'
       }`}
     >
-      <div className="container-custom px-6">
+      <div className="container-custom">
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
           <motion.div
@@ -108,7 +127,7 @@ const Header = () => {
               <span className="text-white font-bold text-xl">D</span>
             </div>
             <span className={`font-heading font-bold text-2xl ${
-              isScrolled ? 'text-primary' : 'text-white'
+              isScrolled ? 'text-primary' : 'text-primary lg:text-white'
             }`}>
               Dentaire
             </span>
@@ -198,7 +217,7 @@ const Header = () => {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={`lg:hidden p-2 rounded-lg transition-colors ${
-              isScrolled ? 'text-text-dark' : 'text-white'
+              isScrolled ? 'text-text-dark' : 'text-text-dark lg:text-white'
             }`}
           >
             {isMobileMenuOpen ? (
@@ -216,6 +235,7 @@ const Header = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             className="lg:hidden bg-white shadow-medium rounded-lg mt-2 overflow-hidden"
+            ref={mobileMenuRef}
           >
             <div className="py-4 px-6 space-y-4">
               {navItems.map((item) => (

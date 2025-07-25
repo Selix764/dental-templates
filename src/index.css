@@ -38,11 +38,11 @@
   }
   
   .section-padding {
-    @apply py-16 px-6;
+    @apply py-16 px-3 sm:px-6;
   }
   
   .container-custom {
-    @apply max-w-1200 mx-auto;
+    @apply max-w-1200 mx-auto px-3 sm:px-6;
   }
   
   .text-gradient {

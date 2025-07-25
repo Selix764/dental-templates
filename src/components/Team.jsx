@@ -55,7 +55,7 @@ const Team = () => {
 
   return (
     <section id="team" className="section-padding bg-white">
-      <div className="container-custom px-6">
+      <div className="container-custom">
         {/* Header */}
         <motion.div
           ref={ref}

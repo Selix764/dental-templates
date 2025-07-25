@@ -66,7 +66,7 @@ const Testimonials = () => {
           backgroundImage: `url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><pattern id="quote-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><text x="50" y="50" text-anchor="middle" dy=".35em" font-family="serif" font-size="40" fill="%230ea5e9">"</text></pattern></defs><rect width="100%" height="100%" fill="url(%23quote-pattern)"/></svg>')`
         }}
       ></div>
-      <div className="container-custom px-6 relative z-10">
+              <div className="container-custom relative z-10">
         {/* Header */}
         <motion.div
           ref={ref}
@@ -116,11 +116,11 @@ const Testimonials = () => {
               "
             </div>
             {/* Testimonial Content */}
-            <div className="text-center">
+            <div className="md:text-center">
               {/* Patient Image */}
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="w-20 h-20 bg-light-gray rounded-full flex items-center justify-center mx-auto mb-6 overflow-hidden"
+                className="w-20 h-20 bg-light-gray rounded-full flex items-center justify-center mx-auto md:mx-auto mb-6 overflow-hidden"
               >
                 <img 
                   src={testimonials[currentTestimonial].image} 
@@ -130,7 +130,7 @@ const Testimonials = () => {
               </motion.div>
 
               {/* Rating */}
-              <div className="flex items-center justify-center space-x-1 mb-6">
+              <div className="flex items-center justify-center md:justify-center space-x-1 mb-6">
                 {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
                   <StarIcon key={i} className="w-5 h-5 text-yellow-400 fill-current" />
                 ))}
@@ -142,7 +142,7 @@ const Testimonials = () => {
               </blockquote>
 
               {/* Patient Info */}
-              <div>
+              <div className="md:text-center">
                 <h4 className="font-heading text-xl font-semibold text-text-dark mb-1">
                   {testimonials[currentTestimonial].name}
                 </h4>

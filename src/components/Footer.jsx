@@ -62,7 +62,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-text-dark text-white">
-      <div className="container-custom px-6">
+      <div className="container-custom">
         {/* Main Footer */}
         <motion.div
           ref={ref}

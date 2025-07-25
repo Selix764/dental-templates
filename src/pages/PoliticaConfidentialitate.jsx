@@ -3,9 +3,11 @@ import { motion } from 'framer-motion';
 import { ArrowLeftIcon, CheckIcon, ShieldCheckIcon } from '@heroicons/react/24/outline';
 import { useScrollAnimation, fadeInUp } from '../hooks/useScrollAnimation';
 import { useScrollToTop } from '../hooks/useScrollToTop';
+import { useAppointment } from '../context/AppointmentContext';
 
 const PoliticaConfidentialitate = () => {
   const { ref, isInView } = useScrollAnimation();
+  const { openModal } = useAppointment();
   
   // Ensure page scrolls to top
   useScrollToTop();
@@ -77,7 +79,7 @@ const PoliticaConfidentialitate = () => {
     <div className="min-h-screen bg-white">
       {/* Header */}
       <div className="bg-primary text-white py-16">
-        <div className="container-custom px-6">
+        <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -104,7 +106,7 @@ const PoliticaConfidentialitate = () => {
       </div>
 
       {/* Main Content */}
-      <div className="container-custom px-6 py-16">
+              <div className="container-custom py-16">
         <div className="max-w-4xl mx-auto">
           {/* Introduction */}
           <motion.div
@@ -225,6 +227,7 @@ const PoliticaConfidentialitate = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={openModal}
                 className="btn-primary"
               >
                 Contactați-ne

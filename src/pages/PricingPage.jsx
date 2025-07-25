@@ -101,7 +101,7 @@ const PricingPage = () => {
     <div className="min-h-screen bg-white">
       {/* Header */}
       <div className="bg-primary text-white py-16">
-        <div className="container-custom px-6">
+        <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -128,7 +128,7 @@ const PricingPage = () => {
       </div>
 
       {/* Main Content */}
-      <div className="container-custom px-6 py-16">
+              <div className="container-custom py-16">
         {/* Pricing Grid */}
         <motion.div
           ref={ref}

@@ -40,7 +40,7 @@ const WhyChooseUs = () => {
 
   return (
     <section className="section-padding bg-light-gray">
-      <div className="container-custom px-6">
+      <div className="container-custom">
         {/* Header */}
         <motion.div
           ref={ref}
